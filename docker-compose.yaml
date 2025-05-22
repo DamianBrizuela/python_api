@@ -1,0 +1,15 @@
+version '3.8'
+
+services:
+  api:  
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: fastapi_python
+    volumes:
+      - ./api:/app
+    env_file:
+      - ./api/ .env
+    entrypoint: ["/app/entrypoint.sh"]
+    network__mode: "bridge"
+    restart: always
